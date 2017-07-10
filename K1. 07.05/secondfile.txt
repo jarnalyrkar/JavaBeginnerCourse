@@ -1,0 +1,3 @@
+Dette er en linje
+Denne er lik
+Denne er crash

@@ -17,7 +17,7 @@ public class WordOrganizer {
 				int longWord = 0;
 				int totalWords = 0;
 				
-				while (sc.hasNext()) {
+				while (sc.hasNextLine()) {
 					totalWords++;
 					String word = sc.next();
 					if (word.length() < 6 && word.length() > 0) {
