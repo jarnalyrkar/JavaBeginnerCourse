@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -9,15 +10,18 @@ public class ReverseFile {
 		// Takes a text file with an alphabetical 
 		// list of something and reverses the content
 		String filename = "list.txt";
+		int lines = 0;
+		String[] contentTab = null;
+		PrintWriter writer = null;
 		try {
 			Scanner sc = new Scanner(new File(filename));
-			int lines = 0;
+			lines = 0;
 			while (sc.hasNextLine()) {
 				sc.nextLine();
 				lines++;
 			}
 			System.out.println(lines);
-			String[] contentTab = new String[lines];
+			contentTab = new String[lines];
 			
 			sc = new Scanner(new File(filename));
 			
@@ -28,7 +32,15 @@ public class ReverseFile {
 			}
 			sc.close();
 			
-			PrintWriter writer = new PrintWriter(filename);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+			try {
+				writer = new PrintWriter(filename);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
 			
 			String[] reverseTab = new String[lines];
 			int k = 0;
@@ -41,9 +53,5 @@ public class ReverseFile {
 				writer.write(reverseTab[l] + System.lineSeparator());
 			}
 			writer.close();
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 }
