@@ -8,13 +8,15 @@ import java.util.Scanner;
 public class RemoveBlankLines {
 
 	public static void main(String[] args) {
-		String filename = args[0];
+		//String filename = args[0];
+		String filename = "thefile.txt";
+		
 		try {
 			Scanner sc = new Scanner(new File(filename));
 			String content = "";
 			String cleanedContent = "";
 			
-			while (sc.hasNextLine()) {
+			while (sc.hasNext()) {
 				content = sc.nextLine();	
 			System.out.println(content);
 			if (!content.isEmpty()) {
@@ -25,11 +27,9 @@ public class RemoveBlankLines {
 			System.out.println(cleanedContent);
 
 			PrintWriter writer = new PrintWriter(filename);
-			BufferedWriter bw = new BufferedWriter(writer);
 			writer.write(cleanedContent);
 			
 			writer.close();
-			bw.close();
 			sc.close();
 			
 		} catch (FileNotFoundException e) {
